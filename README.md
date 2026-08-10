@@ -103,6 +103,9 @@ The development of WAFinity was managed using **Jira** following an Agile/Scrum 
 
 **Epic → User Stories → Subtasks → Sprint → To Do → In Progress → Done**
 
+<img width="1503" height="861" alt="image" src="https://github.com/user-attachments/assets/38232572-506b-4844-82a7-9692a977f05e" />
+
+
 ### 📊 Sprint Metrics
 
 - **Sprint:** SCRUM Sprint 1
