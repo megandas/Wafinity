@@ -1,165 +1,110 @@
-# WAFinity - Infinite Protection, Intelligent Detection
+# 🛡️ WAFinity — Intelligent Web Application Firewall
 
-**WAFinity** is an Advanced Web Application Firewall (WAF) that protects web applications from known threats such as SQL injection, Cross-Site Scripting (XSS), and other similar attacks by filtering and monitoring HTTP traffic between the application and the Internet.
+WAFinity is an Advanced Web Application Firewall (WAF) designed to protect
+web applications from malicious HTTP traffic.
 
-In addition to signature-based detection, it uses **machine learning-based anomaly detection** to identify obfuscated, zero-day, and previously unknown attacks by analyzing patterns and behaviors in incoming requests.
+It combines traditional signature-based detection with machine learning-based
+anomaly detection to identify both known and previously unseen threats.
 
-## **How it works**
+## 🚀 Key Features
 
-![WAF Flow](./Hybrid%20WAF_files/WAF%20flow.jpg)
+- 🚫 Block known web attacks
+- 🤖 ML-based anomaly detection
+- 🛡️ Real-time HTTP request analysis
+- 🔍 Detection of obfuscated and encoded attacks
+- 📊 Interactive security insights
+- ✨ Modern responsive interface
+- ⚡ Fast request processing
+
+## 🧠 How It Works
+
+WAFinity uses a dual-layer detection approach:
+
+HTTP Request
+      ↓
+Signature-Based Detection
+      ↓
+Known Attack? ── Yes → BLOCK
+      ↓ No
+Feature Engineering
+      ↓
+ML-Based Anomaly Detection
+      ↓
+Malicious? ── Yes → BLOCK
+      ↓ No
+    ALLOW
+
+### ML Detection
+
+The machine learning layer analyzes characteristics of incoming HTTP
+requests to identify anomalous behavior.
+
+Features include:
+
+- Payload entropy
+- Parameter length
+- Special-character distribution
+- Request/payload characteristics
+
+This allows the system to detect obfuscated and previously unseen
+attack patterns beyond traditional signatures.
+
+## 🛡️ Threat Detection
+
+### Signature-Based Detection
+
+WAFinity detects known attack patterns such as:
+
+- SQL Injection
+- Cross-Site Scripting (XSS)
+- UNION-based SQL Injection
+- JavaScript injection
+
+### ML-Based Anomaly Detection
+
+The ML layer analyzes suspicious or obfuscated inputs, including:
+
+- URL-encoded attacks
+- Hex-encoded payloads
+- Obfuscated JavaScript
+- Encoded XSS payloads
+
+## 📊 Performance
+
+| Metric | Result |
+|---|---:|
+| Threat Detection Precision | 95% |
+| Request Response Time | <200 ms |
+| Detection Approach | Hybrid ML + Signature |
+
+## 🖥️ Output Screenshots
+<img width="777" height="447" alt="image" src="https://github.com/user-attachments/assets/097e141e-67b1-4032-8333-62a6de5614a0" />
+<img width="777" height="622" alt="image" src="https://github.com/user-attachments/assets/aa10dbc0-a9fb-426c-a137-42bb11448a86" />
+<img width="777" height="454" alt="image" src="https://github.com/user-attachments/assets/30635b13-112e-4fb5-9a26-654008ada889" />
 
 
-## Features
+## 📋 Project Management
 
-- 🚫 Block Known Web Attacks
-- 🤖 AI-powered threat detection
-- 🛡️ Real-time Request Analysis
-- ✨ Modern, Responsive UI
-- 📊 Interactive Security Insights
-- 🚀 Fast response time
+The development of WAFinity was managed using **Jira** following an Agile/Scrum workflow.
 
+### 🏗️ Epic
+**NeuroShield: Intelligent Web Defense**
 
-##  Output Screenshots
+### 📌 User Stories
 
-<p float="left">
-    <img src="./output-screenshots/waf-ss1.png" width="400"/>
-    <img src="./output-screenshots/waf-ss2.png" width="400"/>
-</p>
+- **Develop ML Threat Detection Model** — Build an ML model to analyze HTTP requests and detect malicious requests in real time.
+- **Implement Feature Engineering** — Extract relevant features from HTTP requests for effective anomaly detection.
+- **Implement Signature-Based Detection** — Detect and block known web attacks using predefined signatures.
+- **Integrate ML and Signature Detection** — Combine rule-based and ML-based detection into a dual-layered defense system.
+- **Integrate Detection Engine with Flask** — Integrate the detection engine with the Flask application for real-time request analysis.
+- **Evaluate and Optimize Threat Detection** — Evaluate detection accuracy and optimize response time and overall performance.
 
-<p float="left">
-    <img src="./output-screenshots/waf-ss3.png" width="400"/>
-    <img src="./output-screenshots/waf-ss4.png" width="400"/>
-</p>
+### 🔄 Agile Workflow
 
-<p float="left">
-    <img src="./output-screenshots/waf-ss5.png" width="400"/>
-    <img src="./output-screenshots/waf-ss6.png" width="400"/>
-</p>
+**Epic → User Stories → Subtasks → Sprint → To Do → In Progress → Done**
 
+### 📊 Sprint Metrics
 
-## Tech Stack
-
-- Python/Flask
-- JavaScript
-- HTML/CSS
-- Machine Learning
-
-## 🧪 Example Requests
-### ✅ Valid Requests
-
-**1. Homepage**
-```
-GET / HTTP/1.1
-Host: www.example.com
-```
-
-**2. Product listing**
-```
-GET /products?category=electronics&page=2 HTTP/1.1
-Host: www.ecommerce.com
-Referer: https://www.ecommerce.com/products
-```
-
-**3. Single product**
-```
-GET /product/12345 HTTP/1.1
-Host: www.ecommerce.com
-Referer:https://www.ecommerce.com/products?category=electronics&page=2
-```
-
-**4. Add to cart (POST with JSON body)**
-```
-POST /cart/add HTTP/1.1
-Host: www.ecommerce.com
-Content-Type: application/json
-Content-Length: 45
-
-{"productId": "12345", "quantity": 1}
-```
-
-### ❌Signature-Based Detection (Malicious Input)
-
-**1. SQL Injection via search**
-```
-GET /search?q=' OR '1'='1'; DROP TABLE users;-- HTTP/1.1
-Host: www.example.com
-```
-
-**2. XSS in comment**
-```
-GET /comment?text=<script>alert('XSS')</script> HTTP/1.1
-Host: www.example.com
-```
-
-**3. XSS using eval**
-```
-GET /comment?text=<script>eval(String.fromCharCode(97,108,101,114,116,40,39,88,83,83,39,41))</script> HTTP/1.1
-Host: www.example.com
-```
-
-**4. SQL Injection with UNION**
-```
-GET /search?q=1' UNION SELECT username,password FROM users-- HTTP/1.1
-Host: www.example.com
-```
-
-### 🚨  ML-based Anomaly Detection (Obfuscated Malicious Input/Encoded Attacks)
-
-**1. URL-encoded SQLi**
-```
-GET /search?q=%27%20OR%20%271%27%3D%271 HTTP/1.1
-Host: www.example.com
-```
-
-**2. Hex-encoded SQLi**
-```
-GET /search?q=\x27\x20OR\x20\x31\x3D\x31 HTTP/1.1
-Host: www.example.com
-```
-
-**3. Obscure HTML Elements + JS Access**
-```
-GET /comment?text=<details%20open%20ontoggle=Function('ale'+'rt(1)')()> HTTP/1.1
-```
-
-**4. Encoded XSS**
-```
-GET /comment?text=%3Cscript%3Ealert%28%27XSS%27%29%3C%2Fscript%3E HTTP/1.1
-Host: www.example.com
-```
-
-## 🛠️Setup
-
-1. Clone the repository:
-
-bash
-```
-git clone https://github.com/YOUR_USERNAME/Advanced-WAF-WAFinity.git
-```
-```
-cd Advanced-WAF-WAFinity
-```
-
-2. Install dependencies:
-
-bash
-```
-pip install -r requirements.txt
-```
-
-3. Run the application:
-
-bash
-```
-python app.py
-```
-
-## License
-
-MIT License
-" > README.md
-
-## Add and commit README
-git add README.md
-git commit -m "Add README.md"
-git push
+- **Sprint:** SCRUM Sprint 1
+- **Total Story Points:** 33
+- **Methodology:** Agile/Scrum
