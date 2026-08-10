@@ -1,0 +1,54 @@
+WAFINITY - JIRA PROJECT MANAGEMENT
+==================================
+Jira Project:
+https://megandas.atlassian.net/jira/software/projects/SCRUM/summary?atlOrigin=eyJpIjoiMzE0ZDU0YjcxNmFiNDQxZmE3NTg1ZmZjODU5NWYxNmMiLCJwIjoiaiJ9
+
+Project: Wafinity
+Epic: NeuroShield: Intelligent Web Defense
+
+METHODOLOGY
+-----------
+Agile / Scrum
+
+SPRINT
+------
+Sprint: SCRUM Sprint 1
+Total Story Points: 33
+
+USER STORIES
+------------
+
+1. Develop ML Threat Detection Model
+   Build an ML model to analyze HTTP requests and detect
+   malicious requests in real time.
+
+2. Implement Feature Engineering
+   Extract relevant features from HTTP requests for
+   effective anomaly detection.
+
+3. Implement Signature-Based Detection
+   Detect and block known web attacks using predefined
+   signatures.
+
+4. Integrate ML and Signature Detection
+   Combine rule-based and ML-based detection into a
+   dual-layered defense system.
+
+5. Integrate Detection Engine with Flask
+   Integrate the detection engine with the Flask application
+   for real-time request analysis.
+
+6. Evaluate and Optimize Threat Detection
+   Evaluate detection accuracy and optimize response time
+   and overall performance.
+
+AGILE WORKFLOW
+--------------
+Epic → User Stories → Subtasks → Sprint
+→ To Do → In Progress → Done
+
+JIRA BOARD
+----------
+The Jira project was used to manage development tasks,
+assign story points, track subtasks, and monitor sprint progress.
+
